@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="usual_css.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .logo {
+            font-style: italic;
+            font-weight: bold;
+            color: orange;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .container {
+            display: flex;
+            padding-bottom: 50px;
+        }
+
+        .sidebar {
+            width: 25%;
+            padding: 0;
+            margin: 0;
+            border-right: 2px solid #000; /* Sidebar border */
+        }
+
+        .page-content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .toc {
+            display: block;
+        }
+
+        .list-group-item {
+            display: block;
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .list-group-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .breadcrumb {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+
+        .breadcrumb li {
+            display: inline;
+            font-size: 14px;
+        }
+
+        .breadcrumb li + li:before {
+            content: " / ";
+            padding: 0 5px;
+        }
+
+        /* Open Graph 스타일 */
+        figure {
+            margin: 0 0 20px;
+            max-width: 100%;
+            clear: both;
+        }
+        figure[data-ke-type='opengraph'] {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        figure[data-ke-type='opengraph'] a {
+            position: relative;
+            box-sizing: border-box;
+            display: block;
+            height: 200px;
+            border: 1px solid #d9d9d9;
+            text-decoration: none;
+            color: #000;
+            z-index: 1;
+        }
+        figure[data-ke-type='opengraph'] div.og-image {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 200px;
+            border-right: 1px solid #d9d9d9;
+            background-size: cover;
+            background-position: center;
+        }
+        figure[data-ke-type='opengraph'] div.og-text {
+            position: absolute;
+            left: 201px;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            box-sizing: border-box;
+            padding: 33px 46px 0 39px;
+        }
+        figure[data-ke-type='opengraph'] div.og-text p.og-title {
+            color: #000000;
+            font-size: 22px;
+            line-height: 28px;
+            max-width: 467px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin: 0 0 10px 0 !important;
+            overflow: hidden;
+            font-family: Pretendard-Regular, sans-serif;
+        }
+        figure[data-ke-type='opengraph'] div.og-text p.og-desc {
+            margin: 0px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            font-family: Pretendard-Regular, sans-serif;
+            font-size: 14px;
+            font-weight: 300;
+            color: #909090;
+            max-height: 42px;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            display: -webkit-box;
+        }
+        figure[data-ke-type='opengraph'] div.og-text p.og-host {
+            position: absolute;
+            bottom: 24px;
+            font-family: Pretendard-Regular, sans-serif;
+            font-size: 14px;
+            color: #909090;
+            margin: 0;
+        }
+    </style>
+    <script>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</head>
+<body>
+    <header class="header">
+        <a class="logo" onclick="scrollToTop()">ArrangeforMe</a>
+    </header>
+
+    <div class="container">
+        <div class="sidebar">
+            <div class="toc toc-checker">
+                <div class="row">
+                    <div class="col-xs-12" style="padding:0;">
+                        <div class="row clearfix" style="margin:0;padding:0;border-bottom:solid 1px #ccc;">
+                            <div class="text-left" style="width:75%;">
+                                <input type="text" style="margin-left:15px;" id="searchTitle" name="searchTitle" class="input-search" placeholder="Search title" autocomplete="off">
+                                <ul id="search-results" class="dropdown-menu" aria-labelledby="kw"></ul>
+                            </div>
+                            <div class="pull-right">
+                                <button class="btn btn-sm btn-default find-btn" style="margin-top:12px;">
+                                    <i class="glyphicon glyphicon-search" title="찾기"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-group list-group-toc">
+                    <a class="list-group-item" href="/book/1" style="margin:0;">
+                        <span style="white-space:nowrap;overflow:hidden;display:block;" title="점프 투 파이썬">
+                            <i class="glyphicon glyphicon-book"></i>
+                            <strong>점프 투 파이썬</strong>
+                        </span>
+                    </a>
+                    <a href="javascript:page(2)" class="list-group-item">
+                        <span style="white-space:nowrap;overflow:hidden;display:block;" title="00장 들어가기 전에">
+                            <span style="padding-left:0px">00장 들어가기 전에</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-content">
+            <figure id="og_1654588597040" contenteditable="false" data-ke-type="opengraph" data-ke-align="alignCenter" data-og-type="article" data-og-title="[WEB] 🌐 웹 서비스 구조 (Web서버 / 웹컨테이너 / WAS) 정리" data-og-description="Static vs Dynamic 페이지 Static Pages 정적 페이지 데이터베이스에서 정보를 가져오거나 등 별도의 서버에서의 처리가 없어도, 사용자들에게 보여줄 수 있는 페이지. 어떠한 사용자가 오던간에 동일한" data-og-host="inpa.tistory.com" data-og-source-url="https://inpa.tistory.com/entry/WEB-%F0%9F%8C%90-%EC%9B%B9-%EC%84%9C%EB%B9%84%EC%8A%A4-%EA%B5%AC%EC%A1%B0-%EC%A0%95%EB%A6%AC" data-og-url="https://inpa.tistory.com/entry/WEB-%F0%9F%8C%90-%EC%9B%B9-%EC%84%9C%EB%B9%84%EC%8A%A4-%EA%B5%AC%EC%A1%B0-%EC%A0%95%EB%A6%AC" data-og-image="https://scrap.kakaocdn.net/dn/cFAkeN/hyOhCXdbCX/jyriyzegTYNyXdefV5tkJ0/img.jpg?width=800&amp;height=433&amp;face=0_0_800_433,https://scrap.kakaocdn.net/dn/b8FgRF/hyOhvX6nPH/FXQAJJs6jPEmktUPtWJUqK/img.jpg?width=800&amp;height=433&amp;face=0_0_800_433,https://scrap.kakaocdn.net/dn/bpdFU6/hyOhCCUCVd/BNiZIkErbvukBju561t7N1/img.jpg?width=1280&amp;height=620&amp;face=0_0_1280_620">
+                <a href="https://inpa.tistory.com/entry/WEB-%F0%9F%8C%90-%EC%9B%B9-%EC%84%9C%EB%B9%84%EC%8A%A4-%EA%B5%AC%EC%A1%B0-%EC%A0%95%EB%A6%AC" data-source-url="https://inpa.tistory.com/entry/WEB-%F0%9F%8C%90-%EC%9B%B9-%EC%84%9C%EB%B9%84%EC%8A%A4-%EA%B5%AC%EC%A1%B0-%EC%A0%95%EB%A6%AC">
+                    <div class="og-image" style="background-image: url('https://scrap.kakaocdn.net/dn/cFAkeN/hyOhCXdbCX/jyriyzegTYNyXdefV5tkJ0/img.jpg?width=800&amp;height=433&amp;face=0_0_800_433,https://scrap.kakaocdn.net/dn/b8FgRF/hyOhvX6nPH/FXQAJJs6jPEmktUPtWJUqK/img.jpg?width=800&amp;height=433&amp;face=0_0_800_433,https://scrap.kakaocdn.net/dn/bpdFU6/hyOhCCUCVd/BNiZIkErbvukBju561t7N1/img.jpg?width=1280&amp;height=620&amp;face=0_0_1280_620');"></div>
+                    <div class="og-text">
+                        <p class="og-title" data-ke-size="size16">[WEB] 🌐 웹 서비스 구조 (Web서버 / 웹컨테이너 / WAS) 정리</p>
+                        <p class="og-desc" data-ke-size="size16">Static vs Dynamic 페이지 Static Pages 정적 페이지 데이터베이스에서 정보를 가져오거나 등 별도의 서버에서의 처리가 없어도, 사용자들에게 보여줄 수 있는 페이지. 어떠한 사용자가 오던간에 동일한</p>
+                        <p class="og-host" data-ke-size="size16">inpa.tistory.com</p>
+                    </div>
+                </a>
+            </figure>
+        </div>
+    </div>
+</body>
+</html>
+    
